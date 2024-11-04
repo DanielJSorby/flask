@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="no">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Innlogging</title>
+	</head>
+	<body>
+		<h2>Logg inn</h2>
+		<form id="loginForm">
+			<label for="username">Brukernavn:</label>
+			<input
+				type="text"
+				id="username"
+				name="username"
+				required
+			/><br /><br />
+			<label for="password">Passord:</label>
+			<input
+				type="password"
+				id="password"
+				name="password"
+				required
+			/><br /><br />
+			<button type="button" onclick="login()">Logg inn</button>
+		</form>
+		<p id="result"></p>
+		<script>
+			async function login() {
+				// Hent brukernavn og passord fra input-feltene
+				const username = document.getElementById("username").value;
+				const password = document.getElementById("password").value;
+
+				// Send data til Flask-serveren
+				const response = await fetch("/login", {
+					method: "POST", // Bruk POST-metoden for å sende data
+					headers: {
+						"Content-Type": "application/json", // Angi at dataene er i JSON-format
+					},
+					body: JSON.stringify({ username, password }), // Konverter brukernavn og passord til JSON
+				});
+
+				// Hent JSON-responsen fra serveren
+				const result = await response.json();
+				// Vis meldingen fra serveren i elementet med id "result"
+				document.getElementById("result").innerText = result.message;
+			}
+		</script>
+	</body>
+</html>
