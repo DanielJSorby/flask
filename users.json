@@ -10,5 +10,17 @@
 	{
 		"username": "bruker3",
 		"password": "passord789"
+	},
+	{
+		"username": "Simen",
+		"password": "DanielMåHashePassordeneSine"
+	},
+	{
+		"username": "Daniel",
+		"password": "SimenMåHashePassordeneSine"
+	},
+	{
+		"username": "Johan A",
+		"password": "feinfeinfein"
 	}
 ]
